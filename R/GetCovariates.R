@@ -95,7 +95,7 @@ getDbCovariateData <- function(connectionDetails = NULL,
   } else {
     cohortDatabaseSchemaTable <- paste(cohortDatabaseSchema, cohortTable, sep = ".")
   }
-  sql <- "SELECT cohort_definition_id, COUNT_BIG(*) AS size FROM @cohort_database_schema_table {@cohort_id != -1} ? {WHERE cohort_definition_id IN (@cohort_id)} GROUP BY cohort_definition_id;"
+  sql <- "SELECT cohort_definition_id, COUNT_BIG(*) AS \"size\" FROM @cohort_database_schema_table {@cohort_id != -1} ? {WHERE cohort_definition_id IN (@cohort_id)} GROUP BY cohort_definition_id;"
   sql <- SqlRender::render(sql = sql,
                            cohort_database_schema_table = cohortDatabaseSchemaTable,
                            cohort_id = cohortId)
